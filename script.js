@@ -14,3 +14,9 @@ const createTemplate = () => {
 }
 
 createTemplate()    
+
+document.querySelectorAll('.glass').forEach(glass => {
+    glass.addEventListener('click', () => {
+        console.log(glass.className);
+    });
+});
