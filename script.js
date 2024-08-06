@@ -13,4 +13,4 @@ const createTemplate = () => {
     }
 }
 
-createTemplate()
+createTemplate()    
