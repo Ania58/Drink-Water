@@ -11,12 +11,18 @@ const createTemplate = () => {
         glasses.innerHTML +=  template
         
     }
+    addListenerToGlasses()
+}
+
+const addListenerToGlasses = () => {
+
+    const allGlasses = document.querySelectorAll('.glass')
+    
+    allGlasses.forEach(glass => {
+        glass.addEventListener('click', () => {
+            console.log(glass.className);
+        });
+    });
 }
 
 createTemplate()    
-
-document.querySelectorAll('.glass').forEach(glass => {
-    glass.addEventListener('click', () => {
-        console.log(glass.className);
-    });
-});
