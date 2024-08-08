@@ -1,6 +1,10 @@
 const glasses = document.getElementById('glasses')
 let cupAdded = []
 let maxCap = 2
+const litersLeft = document.getElementById('liters')
+
+console.log(litersLeft)
+
 const createTemplate = () => {
     
     
@@ -20,7 +24,8 @@ const addListenerToGlasses = () => {
     allGlasses.forEach(glass => {
         glass.addEventListener('click', () => {
             const id = glass.id
-            remainingAmount(id)
+            remainingAmount(id);
+            updateConsole();
         });
     });
 }
@@ -49,4 +54,26 @@ const deleteCup = (id) => {
     elementId.classList.remove('glassChosen')
     cupAdded = cupAdded.filter(cup => cup !== id)
 }
+
+
+const allTheGlassesDrunk = () => {
+    return cupAdded.length * 0.25;
+}
+
+
+const glassesYouStillNeed = (maxCap) => {
+    const totalDrunk = allTheGlassesDrunk();
+    const subtract = maxCap - totalDrunk;
+    return subtract;   
+}
+
+const updateConsole = () => {
+    const totalConsumed = allTheGlassesDrunk();
+    const remaining = glassesYouStillNeed(maxCap);
+    console.log("Total consumed: " + totalConsumed + " ml");
+    console.log("Remaining: " + remaining + " ml");
+
+    litersLeft.textContent = `${remaining}`
+}
+
 createTemplate()    
