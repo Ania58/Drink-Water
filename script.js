@@ -1,10 +1,10 @@
 const glasses = document.getElementById('glasses')
+const litersLeft = document.getElementById('liters')
+const fill = document.getElementById('fill')
+
 let cupAdded = []
 let maxCap = 2
-const litersLeft = document.getElementById('liters')
-
-console.log(litersLeft)
-
+const percentages = ['12.5','25','37,5','50','62.5','75','87.5','100']
 const createTemplate = () => {
     
     
@@ -25,7 +25,7 @@ const addListenerToGlasses = () => {
         glass.addEventListener('click', () => {
             const id = glass.id
             remainingAmount(id);
-            updateConsole();
+            updateNumber();
         });
     });
 }
@@ -33,12 +33,15 @@ const addListenerToGlasses = () => {
 const remainingAmount = (id) => {
      !cupAdded.includes(id) ? cupAdded.push(id) : deleteCup(id) //solution 1
 
-    
+    fill.innerHTML = percentages[cupAdded.length - 1] + '%'
+    //fill.style.height = percentages[cupAdded.length - 1] + '%'
      cupAdded.forEach(glass => {
         const elementId = document.getElementById(`${glass}`)
         
         elementId.classList.add('glassChosen')
      })
+     
+
     //if(!cupAdded.includes(id) ) cupAdded.push(id)  //solution 2
     
     // if (cupAdded.includes(id)) {  //solution 3
@@ -47,7 +50,7 @@ const remainingAmount = (id) => {
     //     cupAdded.push(id)
     // }
 
-    console.log(cupAdded);
+    
 }
 const deleteCup = (id) => {
     const elementId = document.getElementById(`${id}`)
@@ -61,19 +64,19 @@ const allTheGlassesDrunk = () => {
 }
 
 
-const glassesYouStillNeed = (maxCap) => {
-    const totalDrunk = allTheGlassesDrunk();
+const glassesYouStillNeed = () => {
+    const totalDrunk = allTheGlassesDrunk(); 
     const subtract = maxCap - totalDrunk;
     return subtract;   
 }
 
-const updateConsole = () => {
-    const totalConsumed = allTheGlassesDrunk();
-    const remaining = glassesYouStillNeed(maxCap);
-    console.log("Total consumed: " + totalConsumed + " ml");
-    console.log("Remaining: " + remaining + " ml");
+const updateNumber = () => {
+    
+    const remaining = glassesYouStillNeed();
+    // console.log("Total consumed: " + totalConsumed + " ml");
+    // console.log("Remaining: " + remaining + " ml");
 
-    litersLeft.textContent = `${remaining}`
+    litersLeft.textContent = `${remaining}L`
 }
 
 createTemplate()    
