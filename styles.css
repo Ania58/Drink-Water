@@ -53,6 +53,9 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 .title{
     font-size: 44px;
@@ -75,19 +78,21 @@ body{
     border-radius: 0 0 30px 30px;
     color: #144fc6;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 .fill-cup{  
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
     font-size: 24px;
-
+    
 }
 .liters{
     font-weight: bold;
     letter-spacing: 4px;
+    font-size: 20px;
+    text-align: center;
 }
 .cup-parragraph{
     font-size: 12px;
@@ -122,22 +127,31 @@ body{
     border: 3px solid #144fc6;
     border-radius: 0 0 12px 12px;
     color: #144fc6;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     
 }
 .fill{
-    /* visibility:hidden; */
+    
     height: 0;
+    width: 100%;
     display: flex;
-    align-content: center;
     justify-content: center;
     align-items: center;
-    color: red;
-    font-size: 16px;
+    color: #144fc6;
+    font-size: 30px;
     font-weight: bold;
+    background-color: #6ab3f8;
+    border-radius: 0px 0px 22px 22px;
+    transition: 0.2s linear;
+}
+.glass-container h4{
+    text-align: center;
+}
+.hidden {
+    visibility: hidden;
 }
 .glassChosen{
-    background-color: skyblue;
-    color: black;
+    background-color: #6ab3f8;
+    color: white;
 }
